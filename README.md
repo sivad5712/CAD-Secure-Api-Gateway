@@ -27,6 +27,26 @@ Use these credentials to log in, bypass the MFA check, and test different user p
 
 ---
 
+## ⚙️ API Gateway Routing & Security Spec
+
+The centralized API Gateway interceptor enforces route routing rules, request translation, and role-based access control (RBAC). Below is the complete gateway mapping specification:
+
+| Route Endpoint | API Protocol | Auth Security Filters | Authorized Roles | Description / Operation |
+| :--- | :--- | :--- | :--- | :--- |
+| `POST /api/auth/login` | REST / JSON | None (Public) | Anyone | Step 1: Login. Returns OAuth Code + MFA challenge session |
+| `POST /api/auth/verify-mfa` | REST / JSON | None (Public) | Anyone | Step 2: MFA verification. Returns signed Bearer JWT token |
+| `GET /api/gateway/routes` | REST / JSON | None (Public) | Anyone | Discovers active gateway paths & security policies |
+| `GET /api/cad-projects` | REST / JSON | JWT Signature Filter | `ADMIN`, `ENGINEER`, `VIEWER` | Fetches catalog of all stored CAD drawing assets |
+| `GET /api/cad-projects/:id` | REST / JSON | JWT Signature Filter | `ADMIN`, `ENGINEER`, `VIEWER` | Retrieves metadata details of a specific project |
+| `POST /api/cad-projects` | REST / JSON | JWT + RBAC Check | `ADMIN`, `ENGINEER` | Registers a new drawing file (Blocked for Viewer/Auditor) |
+| `POST /graphql` | GraphQL Query | JWT Signature Filter | `ADMIN`, `ENGINEER`, `VIEWER` | Fetches custom optimized drawing data columns |
+| `POST /graphql` | GraphQL Mutation| JWT + RBAC Check | `ADMIN`, `ENGINEER` | Mutation resolver to insert new drawing metadata |
+| `POST /soap/cad-vault` | SOAP / XML | JWT Signature Filter | `ADMIN`, `ENGINEER` | Operations: `GetDrawingStatus`, `LockDrawing`, `UnlockDrawing` |
+| `GET /api/fhir/cad-designs` | FHIR / JSON | JWT Signature Filter | `ADMIN`, `ENGINEER`, `VIEWER` | Maps catalog drawings to standard HL7 FHIR CADDesign subjects |
+| `GET /api/audit-logs` | REST / JSON | JWT + RBAC Check | `ADMIN`, `AUDITOR` | Fetches security audit trail logs (Blocked for Engineer/Viewer) |
+
+---
+
 ## 💡 Why This Project Exists (Business Scenario)
 In industrial engineering, CAD drawing files (`.dwg` formats) contain intellectual property such as factory blueprints, electrical panels, and machinery layouts. Exposing database schemas directly to client computers is a major security vulnerability. 
 

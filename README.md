@@ -1,5 +1,12 @@
 # CADShield Gateway
 
+![RESTful APIs](https://img.shields.io/badge/API-RESTful-0ea5e9?style=for-the-badge)
+![GraphQL](https://img.shields.io/badge/API-GraphQL-e10098?style=for-the-badge)
+![SOAP](https://img.shields.io/badge/API-SOAP%20XML-10b981?style=for-the-badge)
+![FHIR](https://img.shields.io/badge/Protocol-FHIR%20JSON-a78bfa?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-OAuth%202.0%20%26%20JWT-6366f1?style=for-the-badge)
+![MFA](https://img.shields.io/badge/MFA-Verified-f59e0b?style=for-the-badge)
+
 A minimal but fully working security and API gateway dashboard web application for a CAD/AutoCAD-style engineering company. It demonstrates security controls and multiple API protocols communicating through a centralized API Gateway layer.
 
 ## Overview

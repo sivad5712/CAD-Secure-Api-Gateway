@@ -1,15 +1,4 @@
 # CADShield Gateway
-
-RESTful APIs
-GraphQL
-SOAP
-FHIR
-OAuth 2.0
-JWT
-MFA
-API Gateway
-JSON
-
 ## Live Interactive Demo
 
 Live Application:  

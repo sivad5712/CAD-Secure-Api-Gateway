@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = import.meta.env.VITE_API_URL || 
+  (window.location.origin.includes('localhost') ? 'http://localhost:5000' : window.location.origin + '/_/backend');
 
 function getHeaders(contentType = 'application/json') {
   const headers = {};

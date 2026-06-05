@@ -603,16 +603,4 @@ Planned improvements include:
 - Store CAD metadata in a persistent production database instead of local JSON files.
 - Add encrypted storage for sensitive CAD project metadata.
 - Add rate limiting at the API Gateway layer to reduce abuse and brute-force login attempts.
-- Add request throttling rules by user role and API protocol.
-- Add detailed gateway analytics for REST, GraphQL, SOAP, and FHIR traffic.
-- Add audit log export support for compliance review.
-- Add tamper-resistant audit logging with hash chaining.
-- Add file-level access policies for CAD drawings based on project classification.
-- Add approval workflow for restricted CAD design access.
-- Add API versioning for REST, GraphQL schema updates, SOAP operations, and FHIR-style resources.
-- Add automated API tests for authentication, authorization, and protocol-specific endpoints.
-- Add CI/CD workflow for linting, testing, building, and deployment.
-- Add production-grade secrets management for JWT signing keys and environment configuration.
-- Add observability using structured logs, request tracing, and error monitoring.
-- Add OpenAPI-style documentation for REST endpoints.
-- Add downloadable API testing collection for REST, GraphQL, SOAP, and FHIR examples.
+
